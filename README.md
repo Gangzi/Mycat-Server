@@ -12,6 +12,8 @@
 增加ZooKeeper全局序列号生产器类：IncrAtomicSequenceZKHandler
 * JVM内访问同一个table序列的线程共享该table在本地缓存的序列区间 ，解决IncrSequenceZKHandler由于频繁跳号需要从ZK取序列空间引起的性能损失
 * DistributedAtomicLong 实现跨JVM原子增加值，先尝试乐观锁，失败则用悲观锁 ，更好的性能
+使用：
+server.xml 文件 <property name="sequnceHandlerType">5</property>
 
 
 
