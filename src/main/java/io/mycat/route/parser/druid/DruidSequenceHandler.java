@@ -11,12 +11,7 @@ import java.util.regex.Pattern;
 import io.mycat.MycatServer;
 import io.mycat.config.model.SystemConfig;
 import io.mycat.route.SessionSQLPair;
-import io.mycat.route.sequence.handler.DistributedSequenceHandler;
-import io.mycat.route.sequence.handler.IncrSequenceMySQLHandler;
-import io.mycat.route.sequence.handler.IncrSequencePropHandler;
-import io.mycat.route.sequence.handler.IncrSequenceTimeHandler;
-import io.mycat.route.sequence.handler.IncrSequenceZKHandler;
-import io.mycat.route.sequence.handler.SequenceHandler;
+import io.mycat.route.sequence.handler.*;
 import io.mycat.util.TimeUtil;
 
 /**
@@ -56,6 +51,9 @@ public class DruidSequenceHandler {
                 break;
             case SystemConfig.SEQUENCEHANDLER_ZK_GLOBAL_INCREMENT:
                 sequenceHandler = IncrSequenceZKHandler.getInstance();
+                break;
+            case SystemConfig.SEQUENCEHANDLER_ZK_ATOMIC_INCREMENT:
+                sequenceHandler = IncrAtomicSequenceZKHandler.getInstance();
                 break;
             default:
                 throw new java.lang.IllegalArgumentException("Invalid sequnce handler type " + seqHandlerType);

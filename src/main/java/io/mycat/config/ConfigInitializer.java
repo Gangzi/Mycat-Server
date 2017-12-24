@@ -54,6 +54,7 @@ import io.mycat.route.sequence.handler.DistributedSequenceHandler;
 import io.mycat.route.sequence.handler.IncrSequenceMySQLHandler;
 import io.mycat.route.sequence.handler.IncrSequenceTimeHandler;
 import io.mycat.route.sequence.handler.IncrSequenceZKHandler;
+import io.mycat.route.sequence.handler.IncrAtomicSequenceZKHandler;
 
 /**
  * @author mycat
@@ -110,6 +111,10 @@ public class ConfigInitializer {
 		
 		if (system.getSequnceHandlerType() == SystemConfig.SEQUENCEHANDLER_ZK_GLOBAL_INCREMENT) {
 			IncrSequenceZKHandler.getInstance().load();
+		}
+
+		if (system.getSequnceHandlerType() == SystemConfig.SEQUENCEHANDLER_ZK_ATOMIC_INCREMENT) {
+			IncrAtomicSequenceZKHandler.getInstance().load();
 		}
 		
 		/**

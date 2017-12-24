@@ -108,6 +108,9 @@ public class BatchInsertSequence implements Catlet {
 						case SystemConfig.SEQUENCEHANDLER_ZK_GLOBAL_INCREMENT:
 							sequenceHandler = IncrSequenceZKHandler.getInstance();
 							break;
+						case SystemConfig.SEQUENCEHANDLER_ZK_ATOMIC_INCREMENT:
+							sequenceHandler = IncrAtomicSequenceZKHandler.getInstance();
+							break;
 						default:
 							throw new java.lang.IllegalArgumentException("Invalid sequnce handler type "+seqHandlerType);
 					}
